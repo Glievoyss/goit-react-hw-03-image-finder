@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Modal.module.css';
@@ -7,7 +8,7 @@ export default class Modal extends Component {
 
   modalRef = createRef();
 
-  componentWillMount() {
+  componentWillUnmount() {
     window.removeEventListener('keydown', this.handleKeyPress);
   }
 
@@ -21,6 +22,7 @@ export default class Modal extends Component {
   };
 
   handleBgClick = e => {
+    console.log('kuku');
     const { current } = this.modalRef;
     if (current && e.target !== current) return;
     this.props.closeModal();
